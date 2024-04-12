@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://cdn.tailwindcss.com"></script>
+	</head>
+	<nav class="w-screen h-16 bg-neutral-950 flex flex-row items-center justify-between p-1 fixed top-0 left-0 z-50">
+		<div class="h-full w-1/3">
+			<a href="/" class="pointer-events-auto h-full w-1/3 flex flex-row items-center justify-start pl-5 gap-5">
+				<img src="/images/cheese-logo.png" alt="logo" class="h-3/4" />
+				<img src="/images/brand-text.png" class="h-2/4" alt="brand" />
+			</a>
+		</div>
+		<div class="h-full w-1/3 flex flex-row items-center justify-center">
+			<form action="/listing/search" method="get" class="w-3/4">
+				<div class="w-full relative flex items-center">
+					<label for="searchBar"></label>
+					<input
+						type="search"
+						name="searchBar"
+						id="searchBar"
+						placeholder="Search"
+						class="bg-neutral-800 w-full text-white rounded-md h-10 pl-2 border-2 border-neutral-950"
+					/>
+					<button type="submit" class="absolute right-0 pr-1">🔎</button>
+				</div>
+			</form>
+		</div>
+		<div class="h-full w-1/3 flex flex-row items-center justify-end gap-5 pr-5 text-white">
+			<a href="/listing" class="hover:underline hover:text-blue-500">Browse</a>
+			<a href="/listing/new" class="hover:underline hover:text-blue-500">Sell</a>
+			<%if(!user){ %>
+				<a href="/user/new" class="hover:underline hover:text-blue-500">Sign Up</a>
+				<a href="/user/login"class="hover:underline hover:text-blue-500">Login</a>
+				<%} else {%>
+				<a href="/user/profile" class="hover:underline hover:text-blue-500">Profile</a>
+				<a href="/user/logout" class="hover:underline hover:text-blue-500">Logout</a>
+				<%}%>
+		</div>
+		<div class="content">
+			<% if(errorMessages.length > 0) {%> <% errorMessages.forEach(message=>{%>
+			<div class="error"><%=message%></div>
+			<%});%> <%}%> <% if(successMessages.length > 0) {%> <% successMessages.forEach(message=>{%>
+			<div class="success"><%=message%></div>
+			<%});%> <%}%>
+		</div>
+	</body>
+	</nav>
+</html>

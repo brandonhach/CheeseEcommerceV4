@@ -1,0 +1,116 @@
+<%- include('../partials/header.ejs') %>
+<body class="w-screen h-screen flex flex-col bg-neutral-900 font-sans pt-16">
+	<main class="w-screen h-5/6 bg-neutral-900 text-white flex flex-col justify-center items-center">
+		<section class="flex flex-row justify-center items-center h-3/4 w-3/4 gap-10">
+			<div class="w-1/2 h-full flex flex-col items-center justify-center gap-2">
+				<h1 class="text-5xl font-bold text-amber-100">LIST YOUR CHEESE</h1>
+				<p class="font-thin text-amber-50">
+					Please fill out the required form and include your picture for the listing.
+				</p>
+				<div
+					class="w-3/4 h-3/4 flex flex-row items-center justify-center border-2 rounded-lg border-neutral-950"
+				>
+					<img
+						src="/images/cheese-negotiation.png"
+						alt="cheese-negotiation"
+						class="w-full h-full rounded-lg"
+					/>
+				</div>
+			</div>
+			<div class="w-1/2 h-full flex flex-col justify-center">
+				<form
+					action="/listing/post_cheese"
+					method="POST"
+					enctype="multipart/form-data"
+					class="w-full h-full flex flex-col justify-center items-center gap-3 pr-4"
+				>
+					<div class="flex flex-row w-full items-center">
+						<div class="w-1/4">
+							<label for="condition" class="p-4">Condition</label>
+						</div>
+						<select
+							id="condition"
+							name="condition"
+							required
+							class="bg-neutral-800 w-3/4 text-white rounded-md h-10 pl-2 border-2 border-neutral-950"
+						>
+							<option value="" selected disabled>Select Condition</option>
+							<option value="Mild">Mild</option>
+							<option value="Matured">Matured</option>
+							<option value="Aged">Aged</option>
+							<option value="Extra-Aed">Extra-Aged</option>
+							<option value="Vintage">Vintage</option>
+						</select>
+					</div>
+					<div class="flex flex-row w-full items-center">
+						<div class="w-1/4">
+							<label for="title" class="p-4">Title</label>
+						</div>
+						<input
+							type="text"
+							name="title"
+							id="title"
+							placeholder="Title"
+							required
+							class="bg-neutral-800 w-3/4 text-white rounded-md h-10 pl-2 border-2 border-neutral-950"
+						/>
+					</div>
+					<div class="flex flex-row w-full items-center">
+						<div class="w-1/4">
+							<label for="price" class="p-4">Price</label>
+						</div>
+						<input
+							type="number"
+							name="price"
+							id="price"
+							min="10"
+							max="10000"
+							placeholder="Price"
+							required
+							class="bg-neutral-800 w-3/4 text-white rounded-md h-10 pl-2 border-2 border-neutral-950"
+						/>
+					</div>
+					<div class="flex flex-row w-full items-center">
+						<div class="w-1/4">
+							<label for="details" class="p-4">Details</label>
+						</div>
+						<textarea
+							name="details"
+							id="details"
+							cols="51"
+							rows="5"
+							required
+							class="bg-neutral-800 w-3/4 text-white rounded-md h-24 pl-2 border-2 border-neutral-950 resize-none"
+						></textarea>
+					</div>
+					<div class="flex flex-row w-full items-center">
+						<div class="w-1/4">
+							<label for="image" class="p-4">Image</label>
+						</div>
+
+						<input
+							id="image"
+							name="image"
+							type="file"
+							required
+							class="pl-9 block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-amber-50 file:text-amber-700 hover:file:bg-amber-100"
+						/>
+					</div>
+					<div class="flex flex-row w-full justify-center">
+						<div class="w-1/4"></div>
+						<div class="inline-block w-3/4">
+							<button
+								type="submit"
+								value="Submit"
+								class="text-white bg-amber-700 hover:bg-amber-800 focus:outline-none focus:ring-4 focus:ring-amber-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800 w-full flex flex-row items-center justify-center gap-1"
+							>
+								Submit
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</section>
+	</main>
+</body>
+<%- include('../partials/footer.ejs') %>

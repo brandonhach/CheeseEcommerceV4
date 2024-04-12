@@ -1,0 +1,64 @@
+<%- include('../partials/header.ejs') %>
+<body class="w-screen h-screen flex flex-col bg-neutral-900 font-sans pt-16">
+	<main class="w-screen h-5/6 bg-neutral-900 text-white flex flex-col justify-center items-center">
+		<section class="flex flex-row justify-center items-center h-3/4 w-3/4 gap-10">
+			<div class="mx-auto w-1/2 px-4 py-16 sm:px-6 lg:px-8">
+				<div class="mx-auto max-w-lg text-center">
+					<h1 class="text-4xl font-bold sm:text-3xl">Sign In.</h1>
+				</div>
+				<%if(errorMessages.length > 0) { errorMessages.forEach(message=>{%>
+				<div><%=message%></div>
+
+				<%}); }%> <%if(successMessages.length > 0) { successMessages.forEach(message=>{%>
+				<div><%=message%></div>
+				<%}); }%>
+				<form action="/user/login" method="post" class="mx-auto mb-0 mt-8 max-w-md space-y-4">
+					<div>
+						<label for="email" class="sr-only">Email</label>
+
+						<div class="relative">
+							<input
+								type="email"
+								id="email"
+								name="email"
+								required
+								class="bg-neutral-800 w-full text-white rounded-md h-10 pl-2 border-2 border-neutral-950"
+								placeholder="email"
+							/>
+						</div>
+					</div>
+
+					<div>
+						<label for="password" class="sr-only">Password</label>
+
+						<div class="relative">
+							<input
+								type="password"
+								id="password"
+								name="password"
+								required
+								class="bg-neutral-800 w-3/4 text-white rounded-md h-10 pl-2 border-2 border-neutral-950 w-full"
+								placeholder="password"
+							/>
+						</div>
+					</div>
+
+					<div class="flex items-center justify-between">
+						<p class="text-sm text-gray-500">
+							No account?
+							<a class="underline" href="/user/new">Sign up</a>
+						</p>
+
+						<button
+							type="submit"
+							class="inline-block rounded-lg bg-amber-700 px-5 py-3 text-sm font-medium text-white"
+						>
+							Sign in
+						</button>
+					</div>
+				</form>
+			</div>
+		</section>
+	</main>
+</body>
+<%- include('../partials/footer.ejs') %>
