@@ -31,13 +31,20 @@
 			<a href="/listing" class="hover:underline hover:text-blue-500">Browse</a>
 			<a href="/listing/new" class="hover:underline hover:text-blue-500">Sell</a>
 			<%if(!user){ %>
-				<a href="/user/new" class="hover:underline hover:text-blue-500">Sign Up</a>
-				<a href="/user/login"class="hover:underline hover:text-blue-500">Login</a>
+				<a href="/users/new" class="hover:underline hover:text-blue-500">Sign Up</a>
+				<a href="/users/login"class="hover:underline hover:text-blue-500">Login</a>
 				<%} else {%>
-				<a href="/user/profile" class="hover:underline hover:text-blue-500">Profile</a>
-				<a href="/user/logout" class="hover:underline hover:text-blue-500">Logout</a>
+				<a href="/users/profile" class="hover:underline hover:text-blue-500">My Account</a>
+				<a href="/users/logout" class="hover:underline hover:text-blue-500">Logout</a>
 				<%}%>
 		</div>
 	</body>
 	</nav>
+	<div class="flex flex-row items-center justify-center">
+		<% if(errorMessages.length > 0) {%> <% errorMessages.forEach(message=>{%>
+		<div class="error text-red-500"><%=message%></div>
+		<%});%> <%}%> <% if(successMessages.length > 0) {%> <% successMessages.forEach(message=>{%>
+		<div class="success text-green-500"><%=message%></div>
+		<%});%> <%}%>
+	</div>
 </html>

@@ -1,1 +1,0 @@
-mongodb+srv://abc:abc@cluster0.ajdfy36.mongodb.net/nbda-project3?retryWrites=true&w=majority&appName=Cluster0

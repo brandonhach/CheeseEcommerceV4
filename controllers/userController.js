@@ -18,11 +18,11 @@ exports.create = (req, res, next) => {
 			req.session.lastName = user.lastName;
 
 			req.flash('success', 'You have successfully signed up and logged in!');
-			res.redirect('/user/profile');
+			res.redirect('/users/profile');
 		})
 		.catch((err) => {
 			req.flash('error', err.message);
-			res.redirect('/user/signup');
+			res.redirect('/users/signup');
 		});
 };
 
@@ -44,17 +44,17 @@ exports.login = (req, res) => {
 					req.session.firstName = user.firstName;
 					req.session.lastName = user.lastName;
 					req.flash('success', 'You have successfully logged in');
-					res.redirect('/user/profile');
+					res.redirect('/users/profile');
 				} else {
 					console.log('wrong password');
 					req.flash('error', 'Wrong password');
-					res.redirect('/user/login');
+					res.redirect('/users/login');
 				}
 			});
 		} else {
 			console.log('wrong email address');
 			req.flash('error', 'Wrong email');
-			res.redirect('/user/login');
+			res.redirect('/users/login');
 		}
 	});
 };

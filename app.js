@@ -48,7 +48,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/listing', cheeseListingRoutes);
-app.use('/user', userRoutes);
+app.use('/users', userRoutes);
 
 //error-handler
 app.use((req, res, next) => {

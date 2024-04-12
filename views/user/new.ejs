@@ -7,13 +7,14 @@
 					<h1 class="text-4xl font-bold sm:text-3xl">Sign up.</h1>
 				</div>
 
-				<form action="/user/new" method="post" class="mx-auto mb-0 mt-8 max-w-md space-y-4">
+				<form action="/users/new" method="post" class="mx-auto mb-0 mt-8 max-w-md space-y-4">
 					<%if(errorMessages.length > 0) { errorMessages.forEach(message=>{%>
-					<div><%=message%></div>
+					<div class="text-red-500"><%=message%></div>
 
 					<%}); }%> <%if(successMessages.length > 0) { successMessages.forEach(message=>{%>
-					<div><%=message%></div>
+					<div class="text-green-500"><%=message%></div>
 					<%}); }%>
+
 					<div>
 						<label for="firstName" class="sr-only">Firstname</label>
 
