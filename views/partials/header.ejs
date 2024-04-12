@@ -38,13 +38,6 @@
 				<a href="/user/logout" class="hover:underline hover:text-blue-500">Logout</a>
 				<%}%>
 		</div>
-		<div class="content">
-			<% if(errorMessages.length > 0) {%> <% errorMessages.forEach(message=>{%>
-			<div class="error"><%=message%></div>
-			<%});%> <%}%> <% if(successMessages.length > 0) {%> <% successMessages.forEach(message=>{%>
-			<div class="success"><%=message%></div>
-			<%});%> <%}%>
-		</div>
 	</body>
 	</nav>
 </html>

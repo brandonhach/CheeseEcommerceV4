@@ -61,9 +61,7 @@ exports.login = (req, res) => {
 
 exports.profile = (req, res, next) => {
 	let id = req.session.user;
-	let sellerName = `${req.session.firstName} ${req.session.lastName}`;
-
-	Promise.all([User.findById(id), Cheese.find({ seller: sellerName })])
+	Promise.all([User.findById(id), Cheese.find({ author: id })])
 		.then((result) => {
 			const [user, cheeses] = result;
 			res.render('./user/profile', { user, cheeses });

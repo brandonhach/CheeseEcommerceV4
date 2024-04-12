@@ -24,7 +24,7 @@ exports.isAuthor = (req, res, next) => {
 	Cheese.findById(id)
 		.then((cheese) => {
 			if (cheese) {
-				if (cheese.seller == `${req.session.firstName} ${req.session.lastName}`) {
+				if (cheese.author == req.session.user) {
 					return next();
 				} else {
 					let err = new Error('Unauthorized to access the resource');

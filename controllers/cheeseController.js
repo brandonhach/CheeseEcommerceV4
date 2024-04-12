@@ -44,6 +44,7 @@ exports.create = (req, res, next) => {
 	let cheese = new model(req.body); //create a new cheese document
 	cheese.seller = `${req.session.firstName} ${req.session.lastName}`; //new here
 	cheese.image = '/images/uploads/' + req.file.filename;
+	cheese.author = req.session.user;
 	let item = new model(cheese);
 	try {
 		item.save().then((cheese) => {
