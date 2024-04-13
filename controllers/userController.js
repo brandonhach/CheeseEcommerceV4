@@ -9,20 +9,23 @@ exports.new = (req, res) => {
 };
 
 exports.create = (req, res, next) => {
-	const { firstName, lastName, email, password } = req.body;
-	const user = new User({ firstName, lastName, email, password });
+	let user = new User(req.body);
 	user.save()
-		.then(() => {
-			req.session.user = user.id;
-			req.session.firstName = user.firstName;
-			req.session.lastName = user.lastName;
-
-			req.flash('success', 'You have successfully signed up and logged in!');
-			res.redirect('/users/profile');
+		.then((user) => {
+			req.flash('success', 'Account successfully created! You can now log in.');
+			res.redirect('/users/login');
 		})
 		.catch((err) => {
-			req.flash('error', err.message);
-			res.redirect('/users/signup');
+			if (err.name === 'ValidationError') {
+				req.flash('error', err.message);
+				res.redirect('/users/new');
+			} else if (err.code === 11000) {
+				req.flash('error', 'The email address is already in use.');
+				res.redirect('/users/new');
+			} else {
+				console.error(err);
+				next(err);
+			}
 		});
 };
 
