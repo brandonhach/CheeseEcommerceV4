@@ -6,14 +6,7 @@
 				<div class="mx-auto max-w-lg text-center">
 					<h1 class="text-4xl font-bold sm:text-3xl">Sign In.</h1>
 				</div>
-				<div class="mx-auto max-w-lg text-center">
-					<%if(errorMessages.length > 0) { errorMessages.forEach(message=>{%>
-					<div class="text-red-500"><%=message%></div>
-
-					<%}); }%> <%if(successMessages.length > 0) { successMessages.forEach(message=>{%>
-					<div class="text-green-500"><%=message%></div>
-					<%}); }%>
-				</div>
+				<div class="mx-auto max-w-lg text-center"></div>
 
 				<form action="/users/login" method="post" class="mx-auto mb-0 mt-8 max-w-md space-y-4">
 					<div>
